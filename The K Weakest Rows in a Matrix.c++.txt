@@ -1,0 +1,29 @@
+class Solution {
+public:
+    int bsInof1(vector<int>& nums){
+        int low=0;
+        int high=nums.size()-1;
+        while(low<=high){
+            int mid=low+(high-low)/2;
+            if(nums[mid]==1){
+                low=mid+1;
+            }else{
+                high=mid-1;
+            }
+        }
+        return low;
+    }
+    vector<int> kWeakestRows(vector<vector<int>>& mat, int k) {
+        vector<pair<int,int>>mpp;
+        for(int i=0;i<mat.size();i++){
+            mpp.push_back({bsInof1(mat[i]), i});
+        }
+        sort(mpp.begin(), mpp.end());
+
+        vector<int>res;
+        for(int i=0;i<k;i++) {
+            res.push_back(mpp[i].second);
+        }
+        return res;
+    }
+};
