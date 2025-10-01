@@ -1,0 +1,32 @@
+class Solution {
+public:
+    vector<int> answerQueries(vector<int>& nums, vector<int>& queries) {
+        int n=nums.size();
+        int m=queries.size();
+        sort(nums.begin(), nums.end());
+        vector<int>prefixSum(n), res(m);
+        prefixSum[0]=nums[0];
+        for(int i=1;i<n;i++){
+            prefixSum[i]=nums[i]+prefixSum[i-1];
+        }
+        for(int i=0;i<m;i++){
+            if(queries[i]<prefixSum[0]){
+                res[i]=0;
+                continue;
+            }
+            int low=0;
+            int high=n-1;
+            while(low<=high){
+                int mid=low+(high-low)/2;
+                if(prefixSum[mid]<=queries[i]){
+                    low=mid+1;
+                }
+                else{
+                    high=mid-1;
+                }
+            }
+            res[i]=low;
+        }
+        return res;
+    }
+};
