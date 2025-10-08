@@ -8,6 +8,8 @@ public:
             string sub="";
             int i=0;
             while(i<addi.size()){
+                if(addi[i]=='z') sub+='a';
+                else 
                 sub+=(addi[i]+1);
                 i++;
             }
