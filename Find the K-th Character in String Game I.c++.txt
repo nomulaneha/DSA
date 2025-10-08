@@ -1,0 +1,18 @@
+class Solution {
+public:
+    char kthCharacter(int k) {
+        string original="a";
+        string addi="b";
+        while(original.size()<=k){
+            original+=addi;
+            string sub="";
+            int i=0;
+            while(i<addi.size()){
+                sub+=(addi[i]+1);
+                i++;
+            }
+            addi+=sub;
+        }
+        return original[k-1];
+    }
+};
