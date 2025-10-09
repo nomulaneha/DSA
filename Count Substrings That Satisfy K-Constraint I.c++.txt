@@ -1,0 +1,21 @@
+class Solution {
+public:
+    int countKConstraintSubstrings(string s, int k) {
+        int one=0;
+        int zero=0;
+        int cnt=0;
+        int l=0, r=0;
+        while(l<=r && r<s.size()){
+            if(s[r]=='1') one++;
+            if(s[r]=='0') zero++;
+            while(one>k && zero>k){
+                if(s[l]=='1') one--;
+                if(s[l]=='0') zero--;
+                l++;
+            }
+            cnt+=((r-l)+1);
+            r++;
+        }
+        return cnt;
+    }
+}; 
