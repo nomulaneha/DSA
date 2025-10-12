@@ -1,0 +1,14 @@
+class Solution {
+public:
+    bool isSameAfterReversals(int num) {
+        string s1=to_string(num);
+        string rev1=s1;
+        reverse(s1.begin(), s1.end());
+        int res=stoi(s1);
+        string s2=to_string(res);
+        string rev2=s2;
+        reverse(s2.begin(), s2.end());
+        int fi=stoi(s2);
+        return (num==fi);
+    }
+};
