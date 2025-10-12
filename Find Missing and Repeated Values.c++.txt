@@ -1,0 +1,28 @@
+class Solution {
+public:
+    vector<int> findMissingAndRepeatedValues(vector<vector<int>>& grid) {
+       map<int,int> mpp;
+        int n = grid.size();
+        int fi = n * n;
+        for (int i = 0; i < n; ++i)
+            for (int j = 0; j < n; ++j)
+                mpp[grid[i][j]]++;
+
+        vector<int> res;
+        for (int i = 1; i <= fi; i++) {
+            auto it = mpp.find(i);
+            if (it != mpp.end() && it->second >= 2) {
+                res.push_back(i);
+                break;
+            }
+        }
+        for (int i = 1; i <= fi; i++) {
+            if (mpp.find(i) == mpp.end()) {
+                res.push_back(i);
+                break;
+            }
+        }
+
+        return res;
+    }
+};
