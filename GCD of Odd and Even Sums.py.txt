@@ -1,0 +1,16 @@
+import math
+class Solution:
+    def gcdOfOddEvenSums(self, n: int) -> int:
+        odd=1
+        even=2
+        cnto=1
+        cnte=2
+        while n>1:
+            cnto=cnto+2
+            odd=odd+cnto
+            cnte=cnte+2
+            even=even+cnte
+            n-=1
+        res=math.gcd(odd, even)
+        return res
+        
