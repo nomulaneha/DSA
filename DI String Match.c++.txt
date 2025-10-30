@@ -1,0 +1,20 @@
+class Solution {
+public:
+    vector<int> diStringMatch(string s) {
+        vector<int>res;
+        for(int i=0;i<=s.size();i++){
+            res.push_back(i);
+        }
+        int j=0;
+        for(int i=0;i<s.size();i++){
+            if(s[i]=='I') j++;
+            if(s[i]=='D'){
+                int ind = s.size();
+                res.insert(res.begin()+j, res[ind]);
+                j++;
+            }
+        }
+        res.erase(res.begin()+s.size()+1, res.end());
+        return res;
+    }
+};
